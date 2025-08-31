@@ -21,8 +21,48 @@
   }
 }
 
-/* Global highlighter effect for links */
+/* Keyframes for hero highlight animation */
+@keyframes highlightReveal {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1.05);
+    opacity: 1;
+  }
+}
+
+/* Hero text highlighter effect with animation on load */
 @layer components {
+  .highlight-hero {
+    @apply relative inline-block;
+  }
+  
+  .highlight-hero::after {
+    content: '';
+    @apply absolute inset-x-0 -z-10;
+    @apply bg-yellow-300/70;
+    bottom: -0.1em;
+    height: 0.5em;
+    animation: highlightReveal 0.8s ease-out forwards;
+    transform-origin: left center;
+  }
+  
+  .highlight-hero.delay-1::after {
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+  }
+  
+  .highlight-hero.delay-2::after {
+    animation-delay: 0.6s;
+    animation-fill-mode: both;
+  }
+
+/* Global highlighter effect for links */
   /* Manual highlight class for custom usage */
   .highlight-link {
     @apply relative inline-block transition-all duration-300;
