@@ -1,0 +1,17 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Blog | David de la Torre" description="Thoughts and writings">
+  <Fragment slot="nav">
+    <Nav />
+  </Fragment>
+  <section class="space-y-4">
+    <h1 class="text-3xl font-light tracking-wide">Blog</h1>
+    <p class="text-gray-600">Coming soon. Thoughts and writings on design, development, and creativity.</p>
+  </section>
+  <Fragment slot="footer">
+    <Footer />
+  </Fragment>
+</BaseLayout>
