@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
+import Link from "../../components/Link.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -24,7 +25,9 @@ const { data } = project;
     <Content />
   </article>
   <div class="mt-6">
-    <a class="text-sm hover:underline" href="/work">← Back to all work</a>
+    <Link href="/work" class="text-sm" variant="inline">
+      ← Back to all work
+    </Link>
   </div>
   <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>

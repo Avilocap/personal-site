@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+/* Global highlighter effect for links */
+@layer components {
+  /* Manual highlight class for custom usage */
+  .highlight-link {
+    @apply relative inline-block transition-all duration-300;
+  }
+  
+  .highlight-link::before {
+    content: '';
+    @apply absolute inset-x-0 bottom-0 -z-10 h-2 bg-yellow-300/70;
+    @apply transition-all duration-300 ease-out;
+    @apply scale-x-0 origin-left;
+  }
+  
+  .highlight-link:hover::before {
+    @apply scale-x-110;
+  }
+  
+  /* Auto-apply to links in prose content */
+  .prose a {
+    @apply relative inline-block transition-all duration-300 no-underline;
+    @apply text-gray-700 hover:text-gray-900;
+  }
+  
+  .prose a::after {
+    content: '';
+    @apply absolute inset-x-0 bottom-0 -z-10 h-1.5 bg-yellow-300/70;
+    @apply transition-all duration-300 ease-out;
+    @apply scale-x-0 origin-left;
+  }
+  
+  .prose a:hover::after {
+    @apply scale-x-110;
+  }
+}

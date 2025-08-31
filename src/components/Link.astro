@@ -1,0 +1,57 @@
+---
+export interface Props {
+  href: string;
+  class?: string;
+  variant?: 'default' | 'nav' | 'inline';
+  external?: boolean;
+}
+
+const { 
+  href, 
+  class: className = '', 
+  variant = 'default',
+  external = false 
+} = Astro.props;
+
+// Determine if link is external
+const isExternal = external || href.startsWith('http');
+
+// Base classes for the link
+const baseClasses = 'relative inline-block transition-all duration-300';
+
+// Variant-specific classes with hover effect for highlighter
+const variantClasses = {
+  default: 'text-gray-700 hover:text-gray-900 hover:[&>span:first-child]:scale-x-110',
+  nav: 'text-md font-bold tracking-[0.15em] text-gray-600 hover:text-gray-900 hover:[&>span:first-child]:scale-x-110',
+  inline: 'text-current hover:text-gray-900 hover:[&>span:first-child]:scale-x-110'
+};
+
+// Highlighter height based on variant
+const highlighterHeight = {
+  default: 'h-2',
+  nav: 'h-2',
+  inline: 'h-1.5'
+};
+
+const linkClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
+---
+
+<a 
+  href={href}
+  class={linkClasses}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+>
+  {/* Yellow highlighter effect */}
+  <span class={`
+    absolute inset-x-0 bottom-0 -z-10 
+    bg-yellow-300/70 
+    ${highlighterHeight[variant]}
+    transition-all duration-300 ease-out
+    scale-x-0 origin-left
+  `}></span>
+  
+  <span class="relative z-10">
+    <slot />
+  </span>
+</a>

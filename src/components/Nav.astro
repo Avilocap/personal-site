@@ -29,18 +29,27 @@ const currentPath = Astro.url.pathname;
           <a 
             href={link.href}
             class={`
-              text-md font-bold tracking-[0.15em] transition-all duration-300
+              relative inline-block text-md font-bold tracking-[0.15em] transition-all duration-300
               ${isActive 
-                ? 'text-gray-900' 
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-gray-900 [&>span:first-child]:scale-x-100' 
+                : 'text-gray-600 hover:text-gray-900 hover:[&>span:first-child]:scale-x-110'
               }
             `}
           >
-            {link.label}
-            {/* Ultra-thin underline for active state */}
-            {isActive && (
-              <span class="absolute -bottom-2 left-0 right-0 h-[0.5px] bg-gray-900"></span>
-            )}
+            {/* Yellow highlighter effect on hover */}
+            <span class={`
+              absolute inset-x-0 bottom-0 h-2 -z-10 
+              bg-yellow-300/70 
+              transition-all duration-300 ease-out origin-left
+              ${isActive 
+                ? '' 
+                : 'scale-x-0'
+              }
+            `}></span>
+            
+            <span class="relative z-10">
+              {link.label}
+            </span>
           </a>
         </li>
       );
