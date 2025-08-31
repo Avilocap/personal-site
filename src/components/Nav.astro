@@ -1,0 +1,20 @@
+---
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About me' },
+  { href: '/work', label: 'Work' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<nav class="flex items-center justify-between gap-4">
+  <a href="/" class="font-semibold">My Site</a>
+  <ul class="flex items-center gap-5">
+    {links.map((l) => (
+      <li>
+        <a class="hover:underline" href={l.href}>{l.label}</a>
+      </li>
+    ))}
+  </ul>
+  
+</nav>
+

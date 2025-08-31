@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+const { data } = project;
+
+---
+<BaseLayout title={`${data.title} | Work`} description={data.summary ?? ''}>
+  <Fragment slot="nav"><Nav /></Fragment>
+  <article class="prose max-w-none">
+    <h1>{data.title}</h1>
+    <Content />
+  </article>
+  <div class="mt-6">
+    <a class="text-sm hover:underline" href="/work">← Back to all work</a>
+  </div>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

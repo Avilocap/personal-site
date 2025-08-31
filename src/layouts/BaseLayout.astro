@@ -1,0 +1,37 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = 'Personal Site', description = 'Just getting started' } = Astro.props as Props;
+import "../styles/global.css";
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased bg-[url(/img/background.png)]">
+    <header class="border-b">
+      <div class="mx-auto max-w-5xl px-4 py-4">
+        <slot name="nav" />
+      </div>
+    </header>
+    <main class="flex-1">
+      <div class="mx-auto max-w-5xl px-4 py-10">
+        <slot />
+      </div>
+    </main>
+    <footer class="border-t">
+      <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-gray-500">
+        <slot name="footer" />
+      </div>
+    </footer>
+  </body>
+  
+</html>
+

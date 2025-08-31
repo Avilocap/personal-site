@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout title="About | Personal Site" description="About me">
+  <Fragment slot="nav"><Nav /></Fragment>
+  <section class="prose max-w-none">
+    <h1>About me</h1>
+    <p>
+      This is a placeholder for your bio. We’ll flesh this out later with your
+      story, skills, and interests.
+    </p>
+  </section>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+
