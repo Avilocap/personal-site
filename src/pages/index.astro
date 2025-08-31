@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Link from "../components/Link.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Home | Personal Site" description="Welcome to my personal site">
@@ -16,11 +17,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </h1>
   </section>
 
-  <!-- Work Showcase -->
-  <section class="space-y-6 bg-gray-200">
-    <h2 class="text-3xl font-semibold">My Work</h2>
-    <p class="text-gray-600">Some of my recent projects.</p>
+
+  <section class="border-4 my-10">
+
   </section>
+  <!-- Work Showcase -->
+  <section class="flex flex-col gap-2">
+    <h1 class="text-5xl font-semibold mb-5 uppercase">Work</h1>
+    <Link href="/work/zinkee" class="block text-3xl text-gray-600 hover:text-gray-800 mb-2">
+      Zinkee
+    </Link>
+    <Link href="/work/todo-list" class="block text-3xl text-gray-600 hover:text-gray-800 mb-2">
+      Todo List
+    </Link>
+    <Link href="/work/video-streaming" class="block text-3xl text-gray-600 hover:text-gray-800 mb-2">
+      Video Streaming
+    </Link>
+    <Link href="/work/phone-case" class="block text-3xl text-gray-600 hover:text-gray-800 mb-2">
+      Phone Case
+    </Link>
+  </section>
+
+  <section class="border-4 my-10"></section>
 
   <!-- Contact section -->
   <section class="space-y-6 bg-gray-300">

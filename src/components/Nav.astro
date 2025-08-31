@@ -1,4 +1,6 @@
 ---
+import Link from './Link.astro';
+
 const links = [
   { href: '/', label: 'HOME' },
   { href: '/work', label: 'WORK' },
@@ -12,45 +14,32 @@ const currentPath = Astro.url.pathname;
 ---
 <nav class="flex items-center justify-between w-full">
   <!-- Logo/Name with ultra-thin typography -->
-  <a 
-    href="/" 
-    class="text-xl font-bold tracking text-gray-900 hover:text-gray-600 transition-colors duration-300"
+  <Link
+    href="/"
+    class="text-xl font-bold tracking text-gray-900 hover:text-gray-600"
   >
     DAVID DE LA TORRE
-  </a>
+  </Link>
   
   <!-- Navigation links -->
   <ul class="flex items-center gap-8">
     {links.map((link) => {
-      const isActive = currentPath === link.href || 
+      const isActive = currentPath === link.href ||
                       (link.href !== '/' && currentPath.startsWith(link.href));
       return (
         <li class="relative">
-          <a 
+          <Link
             href={link.href}
+            variant="nav"
             class={`
-              relative inline-block text-md font-bold tracking-[0.15em] transition-all duration-300
-              ${isActive 
-                ? 'text-gray-900 [&>span:first-child]:scale-x-100' 
-                : 'text-gray-600 hover:text-gray-900 hover:[&>span:first-child]:scale-x-110'
+              ${isActive
+                ? 'text-gray-900 [&>span:first-child]:scale-x-100'
+                : 'text-gray-600'
               }
             `}
           >
-            {/* Yellow highlighter effect on hover */}
-            <span class={`
-              absolute inset-x-0 bottom-0 h-2 -z-10 
-              bg-yellow-300/70 
-              transition-all duration-300 ease-out origin-left
-              ${isActive 
-                ? '' 
-                : 'scale-x-0'
-              }
-            `}></span>
-            
-            <span class="relative z-10">
-              {link.label}
-            </span>
-          </a>
+            {link.label}
+          </Link>
         </li>
       );
     })}
