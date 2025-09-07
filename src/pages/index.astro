@@ -10,7 +10,7 @@ import SectionTicker from "../components/SectionTicker.astro";
     <Nav />
   </Fragment>
   <!-- Main Hero (Full Height) -->
-  <section class="border-b-4 flex flex-col justify-end h-[calc(100vh-176px)] pb-10 gap-1 full-bleed">
+  <section class="border-b-4 flex flex-col justify-end h-[calc(100vh-176px)] pb-10 gap-1">
     <h1 class="text-7xl uppercase leading-tight text-gray-800">
       Hey there, I'm <span class="highlight-hero">David</span>.<br />
       A <span class="highlight-hero delay-1">software engineer</span>,<br />
@@ -20,7 +20,7 @@ import SectionTicker from "../components/SectionTicker.astro";
 
 
   <!-- About me section -->
-  <div class="mt-20">
+  <div class="mt-20 max-w-7xl mx-auto">
   <SectionTicker label="ABOUT ME" />
   <section class="my-12 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
     <div>
@@ -49,39 +49,61 @@ import SectionTicker from "../components/SectionTicker.astro";
   </section>
   </div>
   <!-- Work Showcase -->
-  <section class="flex flex-col gap-4">
-    <h1 class="text-5xl font-semibold mb-5 uppercase">Work</h1>
-    <div class="mb-4">
-      <Link href="/work/zinkee" class="block text-4xl text-gray-600 hover:text-gray-800">
-        Zinkee
-      </Link>
-      <p class="text-lg text-gray-500 mt-1">A modern web application built with cutting-edge technologies.</p>
-    </div>
-    <div class="mb-4">
-      <Link href="/work/todo-list" class="block text-4xl text-gray-600 hover:text-gray-800">
-        Todo List
-      </Link>
-      <p class="text-lg text-gray-500 mt-1">A productivity application for task management and organization.</p>
-    </div>
-    <div class="mb-4">
-      <Link href="/work/video-streaming" class="block text-4xl text-gray-600 hover:text-gray-800">
-        Video Streaming
-      </Link>
-      <p class="text-lg text-gray-500 mt-1">A full-featured video streaming application with advanced playback controls.</p>
-    </div>
-    <div class="mb-4">
-      <Link href="/work/phone-case" class="block text-4xl text-gray-600 hover:text-gray-800">
-        Phone Case
-      </Link>
-      <p class="text-lg text-gray-500 mt-1">Custom phone case design with 3D modeling and printing capabilities.</p>
+  <section class="my-20 max-w-7xl mx-auto">
+    <h2 class="text-lg text-gray-600 uppercase tracking-wider mb-8">Recent Work</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col inset-shadow-sm inset-shadow-gray-300">
+        <Link href="/work/zinkee" class="text-3xl md:text-4xl font-normal mb-6 text-gray-800">Zinkee</Link>
+        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
+          A modern web application built with cutting-edge technologies.
+        </p>
+        <div class="mt-8">
+          <Link href="/work/zinkee" variant="inline" class="text-gray-800 text-lg font-medium">
+            Learn more →
+          </Link>
+        </div>
+      </div>
+      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
+        <h3 class="text-3xl md:text-4xl font-normal mb-6 text-gray-800">Todo List</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
+          A productivity application for task management and organization.
+        </p>
+        <div class="mt-8">
+          <Link href="/work/todo-list" variant="inline" class="text-gray-800 text-lg font-medium">
+            Learn more →
+          </Link>
+        </div>
+      </div>
+      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
+        <h3 class="text-3xl md:text-4xl font-normal mb-6 text-gray-800">Video Streaming</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
+          A full-featured video streaming application with advanced playback controls.
+        </p>
+        <div class="mt-8">
+          <Link href="/work/video-streaming" variant="inline" class="text-gray-800 text-lg font-medium">
+            Learn more →
+          </Link>
+        </div>
+      </div>
+      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
+        <h3 class="text-3xl md:text-4xl font-normal mb-6 text-gray-800">Phone Case</h3>
+        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
+          Custom phone case design with 3D modeling and printing capabilities.
+        </p>
+        <div class="mt-8">
+          <Link href="/work/phone-case" variant="inline" class="text-gray-800 text-lg font-medium">
+            Learn more →
+          </Link>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="border-4 my-10"></section>
+  <section class="border-y-2 my-10 max-w-7xl mx-auto"></section>
 
   <!-- Contact section -->
-  <section class="mt-10">
-    <div class="bg-gray-900 text-gray-100 p-8 md:p-12 lg:p-16">
+  <section class="mt-10 max-w-7xl mx-auto">
+    <div class="bg-black text-gray-100 p-8 md:p-12 lg:p-16">
       <h3 class="text-4xl md:text-6xl leading-tight font-semibold max-w-5xl">
         Do you have an exciting project in mind?
       </h3>
