@@ -96,3 +96,30 @@
     @apply scale-x-110;
   }
 }
+
+/* Full-bleed utility to let a section break out of the max-width container */
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* ======================= */
+/* Section ticker animation */
+/* ======================= */
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-track {
+  width: max-content;
+  animation: tickerScroll var(--ticker-duration, 18s) linear infinite;
+}
