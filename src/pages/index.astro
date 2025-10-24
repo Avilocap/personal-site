@@ -1,168 +1,46 @@
 ---
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
-import Link from "../components/Link.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionTicker from "../components/SectionTicker.astro";
 ---
-<BaseLayout title="Home | Personal Site" description="Welcome to my personal site">
-  <Fragment slot="nav">
-    <Nav />
+<BaseLayout title="Under Construction | David" description="Building a new website">
+  <Fragment slot="header">
+    <!-- No header for construction page -->
   </Fragment>
-  <!-- Main Hero (Full Height) -->
-  <section class="border-b-4 flex flex-col justify-end h-[calc(100vh-176px)] pb-10 gap-1">
-    <h1 class="text-7xl uppercase leading-tight text-gray-800">
-      Hey there, I'm <span class="highlight-hero">David</span>.<br />
-      A <span class="highlight-hero delay-1">software engineer</span>,<br />
-      that <span class="highlight-hero delay-2">loves good work</span>.
-    </h1>
-  </section>
+  <!-- Under Construction Banner -->
+  <div class="flex items-center justify-center min-h-[calc(100vh-200px)]">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <!-- Main Message -->
+      <div class="border-4 border-black p-8 md:p-16 bg-white/80">
+        <div class="mb-8">
+          <svg class="w-20 h-20 mx-auto text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+          </svg>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          I'm building a new website
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+          that better represents me
+        </p>
+        
+        <div class="inline-block">
+          <p class="text-lg md:text-xl text-gray-800 font-medium">
+            <span class="highlight-hero">Come back soon</span>
+          </p>
+        </div>
 
-
-  <!-- About me section -->
-  <div class="mt-20 max-w-7xl mx-auto">
-  <SectionTicker label="ABOUT ME" />
-  <section class="my-12 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
-    <div>
-      <h2 class="text-3xl md:text-5xl lg:text-5xl leading-tight  text-gray-800">
-        Experienced Software Engineer with passion for innovation and startups
-      </h2>
-      <p class="mt-8 text-gray-700 text-lg">
-        I'm David, an experienced software engineer with expertise in creating SaaS products, websites, and mobile applications for businesses.
-      </p>
-      <p class="mt-4 text-gray-700 text-lg">
-        I work closely with my colleagues to deliver exceptional results that exceed expectations. If you’re looking for a dedicated software engineer to help bring your ideas to life, don’t hesitate to send me an email!
-      </p>
-      <div class="mt-8">
-        <Link href="mailto:david@daviddelatorre.com" variant="inline" class="text-xl">
-          Let's Work Together →
-        </Link>
+        <!-- Optional: Contact info -->
+        <div class="mt-12 pt-8 border-t-2 border-gray-200">
+          <p class="text-gray-600 mb-4">In the meantime, you can reach me at:</p>
+          <a 
+            href="mailto:david@daviddelatorre.me" 
+            class="inline-block text-lg text-gray-800 hover:text-gray-900 font-medium transition-colors"
+          >
+            david@daviddelatorre.me
+          </a>
+        </div>
       </div>
     </div>
-    <div class="relative">
-      <img
-        src="/img/yop.jpg"
-        alt="David working at his laptop"
-        class="w-full h-auto object-cover shadow-xl/30"
-      />
-    </div>
-  </section>
   </div>
-  <!-- Work Showcase -->
-  <section class="my-20 max-w-7xl mx-auto">
-    <h2 class="text-lg text-gray-600 uppercase tracking-wider mb-8">Recent Work</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col inset-shadow-sm inset-shadow-gray-300">
-        <Link href="/work/zinkee" class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">Zinkee</Link>
-        <p class="text-gray-600 text-lg leading-relaxed">
-          A modern web application built with cutting-edge technologies.
-        </p>
-        <div class="flex flex-wrap gap-2 mt-4 mb-auto">
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">Web</span>
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">React</span>
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">TypeScript</span>
-        </div>
-        <div class="mt-14">
-          <Link href="/work/zinkee" variant="inline" class="text-gray-800 text-lg font-medium">
-            Learn more →
-          </Link>
-        </div>
-      </div>
-      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
-        <h3 class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">Todo List</h3>
-        <p class="text-gray-600 text-lg leading-relaxed">
-          A productivity application for task management and organization.
-        </p>
-        <div class="flex flex-wrap gap-2 mt-4 mb-auto">
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">Productivity</span>
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">React</span>
-          <span class="bg-black text-white px-3 py-1 text-xs uppercase">LocalStorage</span>
-        </div>
-        <div class="mt-14">
-          <Link href="/work/todo-list" variant="inline" class="text-gray-800 text-lg font-medium">
-            Learn more →
-          </Link>
-        </div>
-      </div>
-      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
-        <h3 class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">Video Streaming</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
-          A full-featured video streaming application with advanced playback controls.
-        </p>
-        <div class="mt-14">
-          <Link href="/work/video-streaming" variant="inline" class="text-gray-800 text-lg font-medium">
-            Learn more →
-          </Link>
-        </div>
-      </div>
-      <div class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
-        <h3 class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">Phone Case</h3>
-        <p class="text-gray-600 text-lg leading-relaxed mb-auto">
-          Custom phone case design with 3D modeling and printing capabilities.
-        </p>
-        <div class="mt-14">
-          <Link href="/work/phone-case" variant="inline" class="text-gray-800 text-lg font-medium">
-            Learn more →
-          </Link>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="border-y-2 my-10 max-w-7xl mx-auto"></section>
-
-  <!-- Contact section -->
-  <section class="mt-10 max-w-7xl mx-auto">
-    <div class="bg-black text-gray-100 p-8 md:p-12 lg:p-16">
-      <h3 class="text-4xl md:text-6xl leading-tight font-semibold max-w-5xl">
-        Do you have an exciting project in mind?
-      </h3>
-      <p class="mt-8 text-lg md:text-2xl text-gray-300 max-w-4xl">
-        Contact me to learn how we can collaborate to bring your digital product to life. Let’s build something exceptional together.
-      </p>
-      <div class="mt-10">
-        <Link href="mailto:david@daviddelatorre.com" variant="inline" class="text-2xl text-gray-100 hover:text-white">
-          Drop me an email →
-        </Link>
-      </div>
-      <div class="mt-8 flex gap-4">
-        <a
-          href="https://twitter.com/"
-          aria-label="X"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center w-12 h-12 bg-white text-gray-900 rounded-sm transition-colors hover:bg-gray-200"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path d="M18.244 2H21.5l-7.5 8.59L22.5 22h-6.18l-4.83-5.625L5.82 22H2.5l8-9.17L1 2h6.18l4.41 5.137L18.244 2zm-2.18 18h2.02L7.75 4h-2.02L16.064 20z"/>
-          </svg>
-        </a>
-        <a
-          href="https://www.linkedin.com/"
-          aria-label="LinkedIn"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center w-12 h-12 bg-white text-gray-900 rounded-sm transition-colors hover:bg-gray-200"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path d="M4.983 3.5C4.983 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.483 1.12 2.483 2.5zM.25 8.25h4.5V24h-4.5V8.25zM8.5 8.25h4.31v2.14h.06c.6-1.14 2.07-2.34 4.26-2.34 4.55 0 5.39 3 5.39 6.88V24h-4.5v-7.5c0-1.79-.03-4.09-2.5-4.09-2.5 0-2.88 1.95-2.88 3.96V24H8.5V8.25z"/>
-          </svg>
-        </a>
-        <a
-          href="https://github.com/daviddelatorre"
-          aria-label="GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center w-12 h-12 bg-white text-gray-900 rounded-sm transition-colors hover:bg-gray-200"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-  <Fragment slot="footer">
-    <Footer />
-  </Fragment>
 </BaseLayout>

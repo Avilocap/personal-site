@@ -17,9 +17,11 @@ import "../styles/global.css";
   </head>
   <body class="min-h-screen px-5 flex flex-col antialiased bg-[url(/img/background.png)]">
     <header class="mt-10">
-      <div class="border-4 mx-auto h-24 px-4 flex items-center">
-        <slot name="nav" />
-      </div>
+      <slot name="header">
+        <div class="border-4 mx-auto h-24 px-4 flex items-center">
+          <slot name="nav" />
+        </div>
+      </slot>
     </header>
     <main class="flex-1">
       <div class="mx-auto py-10">
