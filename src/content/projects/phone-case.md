@@ -6,9 +6,6 @@ tags: ["design", "3d", "blender", "printing"]
 links:
   site: "https://phone-case-design.com"
   repo: "https://github.com/username/phone-case"
-cover:
-  src: "https://cdn.prod.website-files.com/65c1fad0cd6ea5af84fb7808/65c1fce5234c0690956737a0_Cabecera-Home%201.webp"
-  alt: "Vista principal del proyecto"
 images:
   - src: "https://cdn.prod.website-files.com/65c1fad0cd6ea5af84fb7808/65c1fce5234c0690956737a0_Cabecera-Home%201.webp"
     alt: "Pantalla de inicio"
@@ -19,7 +16,6 @@ images:
 draft: false
 ---
 
-# Custom Phone Case Design
 
 A creative project exploring 3D design and manufacturing, featuring custom phone case designs that combine functionality with aesthetic appeal. This project emerged from a personal need to create protective cases that weren't just functional, but truly personalized and reflective of individual style preferences.
 

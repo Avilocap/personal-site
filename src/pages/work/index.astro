@@ -6,24 +6,49 @@ import Link from "../../components/Link.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
+// Sort: newest date first, then by title
+const sortedProjects = [...projects].sort((a, b) => {
+  const da = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const db = b.data.date ? new Date(b.data.date).getTime() : 0;
+  if (db !== da) return db - da;
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// (No images here) We render cards similar to home page
 ---
 <BaseLayout title="Work | Personal Site" description="Selected work and projects">
   <Fragment slot="nav"><Nav /></Fragment>
   <section class="space-y-6">
     <h1 class="text-3xl font-semibold">Work</h1>
-    {projects.length === 0 ? (
+    {sortedProjects.length === 0 ? (
       <p>No projects yet. Add some in <code>src/content/projects</code>.</p>
     ) : (
-      <ul class="space-y-4">
-        {projects.map((p) => (
-          <li class="border rounded p-4">
-            <Link href={`/work/${p.slug}`} class="text-lg font-medium">
+      <div class="grid md:grid-cols-2 gap-8">
+        {sortedProjects.map((p) => (
+          <article class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
+            <Link href={`/work/${p.slug}`} class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">
               {p.data.title}
             </Link>
-            {p.data.summary && <p class="text-sm text-gray-600 mt-1">{p.data.summary}</p>}
-          </li>
+            {p.data.summary && (
+              <p class="text-gray-600 text-lg leading-relaxed {p.data.tags?.length ? '' : 'mb-auto'}">
+                {p.data.summary}
+              </p>
+            )}
+            {p.data.tags?.length ? (
+              <div class="flex flex-wrap gap-2 mt-4 mb-auto">
+                {p.data.tags.map((tag) => (
+                  <span class="bg-black text-white px-3 py-1 text-xs uppercase">{tag}</span>
+                ))}
+              </div>
+            ) : null}
+            <div class="mt-14">
+              <Link href={`/work/${p.slug}`} variant="inline" class="text-gray-800 text-lg font-medium">
+                Learn more →
+              </Link>
+            </div>
+          </article>
         ))}
-      </ul>
+      </div>
     )}
   </section>
   <Fragment slot="footer"><Footer /></Fragment>
