@@ -167,6 +167,19 @@
   .prose figure figcaption {
     @apply mt-2 text-xs text-gray-600;
   }
+
+  /* Tighter line-height option for prose */
+  .prose.prose-tight p,
+  .prose.prose-tight li,
+  .prose.prose-tight blockquote p {
+    @apply leading-normal; /* ~1.5 */
+  }
+  .prose.prose-tight h1,
+  .prose.prose-tight h2,
+  .prose.prose-tight h3,
+  .prose.prose-tight h4 {
+    @apply leading-tight; /* ~1.25 */
+  }
 }
 
 /* Full-bleed utility to let a section break out of the max-width container */
