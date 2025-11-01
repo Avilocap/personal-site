@@ -20,14 +20,81 @@ const { data } = project;
 ---
 <BaseLayout title={`${data.title} | Work`} description={data.summary ?? ''}>
   <Fragment slot="nav"><Nav /></Fragment>
-  <article class="prose max-w-none">
-    <h1>{data.title}</h1>
+
+  <div class="max-w-7xl mx-auto">
+  <section class="mb-8">
+    <h1 class="text-4xl md:text-5xl font-semibold leading-tight highlight-hero">
+      {data.title}
+    </h1>
+    <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600">
+      {data.date && (
+        <time datetime={data.date} class="uppercase tracking-wide">
+          {data.date}
+        </time>
+      )}
+      {data.tags?.length ? (
+        <ul class="flex flex-wrap gap-2">
+          {data.tags.map((tag) => (
+            <li class="px-2 py-0.5 border-4">{tag}</li>
+          ))}
+        </ul>
+      ) : null}
+      {data.links?.site && (
+        <a href={data.links.site} target="_blank" rel="noreferrer" class="highlight-link">
+          Visit site →
+        </a>
+      )}
+      {data.links?.repo && (
+        <a href={data.links.repo} target="_blank" rel="noreferrer" class="highlight-link">
+          View code →
+        </a>
+      )}
+    </div>
+  </section>
+
+  {data.cover && (
+    <div class="my-6">
+      <img
+        src={data.cover.src}
+        alt={data.cover.alt ?? data.title}
+        class="w-full max-h-[60vh] object-cover border-4"
+        loading="eager"
+      />
+    </div>
+  )}
+
+  <article class="prose md:prose-lg max-w-none">
     <Content />
   </article>
-  <div class="mt-6">
+
+  {data.images?.length ? (
+    <div class="mt-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {data.images.map((img) => (
+          <figure class="group">
+            <a href={img.src} target="_blank" rel="noreferrer" class="block overflow-hidden border-4">
+              <img
+                src={img.src}
+                alt={img.alt ?? data.title}
+                class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </a>
+            {img.caption && (
+              <figcaption class="mt-2 text-xs text-gray-600">{img.caption}</figcaption>
+            )}
+          </figure>
+        ))}
+      </div>
+    </div>
+  ) : null}
+
+  <div class="mt-8">
     <Link href="/work" class="text-sm" variant="inline">
       ← Back to all work
     </Link>
   </div>
+  </div>
+
   <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>
