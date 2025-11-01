@@ -102,7 +102,7 @@
     @apply text-gray-800;
   }
   .prose img {
-    @apply border-4; /* matches site aesthetic */
+    @apply w-full; /* full width, no border */
   }
 
   /* Headings inside prose */
