@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import Link from "../../components/Link.astro";
+import ContactSection from "../../components/ContactSection.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -95,6 +96,8 @@ const { data } = project;
     </Link>
   </div>
   </div>
+
+  <ContactSection />
 
   <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>

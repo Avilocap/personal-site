@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Link from "../components/Link.astro";
 import SectionTicker from "../components/SectionTicker.astro";
+import ContactSection from "../components/ContactSection.astro";
 ---
 <BaseLayout title="About | Personal Site" description="About me">
   <Fragment slot="nav"><Nav /></Fragment>
@@ -87,6 +88,8 @@ import SectionTicker from "../components/SectionTicker.astro";
       </div>
     </section>
   </div>
+
+  <ContactSection />
 
   <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>
