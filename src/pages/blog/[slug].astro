@@ -41,7 +41,7 @@ const { data } = post;
           {data.tags?.length ? (
             <ul class="flex flex-wrap gap-2">
               {data.tags.map((tag) => (
-                <li class="px-2 py-0.5 border-4">{tag}</li>
+                <li class="bg-black text-white px-3 py-1 text-xs uppercase rounded-lg">{tag}</li>
               ))}
             </ul>
           ) : null}
@@ -58,7 +58,7 @@ const { data } = post;
           <img
             src={data.cover.src}
             alt={data.cover.alt ?? data.title}
-            class="w-full max-h-[60vh] object-cover border-4"
+            class="w-full max-h-[60vh] object-cover border border-gray-300 rounded-lg"
             loading="eager"
           />
         </div>

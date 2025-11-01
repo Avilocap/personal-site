@@ -18,6 +18,7 @@ const sortedProjects = [...projects].sort((a, b) => {
 ---
 <BaseLayout title="Work | Personal Site" description="Selected work and projects">
   <Fragment slot="nav"><Nav /></Fragment>
+  <div class="max-w-7xl mx-auto">
   <section class="space-y-6">
     <h1 class="text-3xl font-semibold">Work</h1>
     {sortedProjects.length === 0 ? (
@@ -25,7 +26,7 @@ const sortedProjects = [...projects].sort((a, b) => {
     ) : (
       <div class="grid md:grid-cols-2 gap-8">
         {sortedProjects.map((p) => (
-          <article class="border-4 border-black p-8 md:p-10 min-h-[250px] flex flex-col">
+          <article class="border border-gray-300 p-8 md:p-10 min-h-[250px] flex flex-col rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <Link href={`/work/${p.slug}`} class="text-3xl md:text-4xl font-normal mb-2 text-gray-800">
               {p.data.title}
             </Link>
@@ -37,7 +38,7 @@ const sortedProjects = [...projects].sort((a, b) => {
             {p.data.tags?.length ? (
               <div class="flex flex-wrap gap-2 mt-4 mb-auto">
                 {p.data.tags.map((tag) => (
-                  <span class="bg-black text-white px-3 py-1 text-xs uppercase">{tag}</span>
+                  <span class="bg-black text-white px-3 py-1 text-xs uppercase rounded-lg">{tag}</span>
                 ))}
               </div>
             ) : null}
@@ -51,6 +52,7 @@ const sortedProjects = [...projects].sort((a, b) => {
       </div>
     )}
   </section>
+  </div>
   <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>
 
