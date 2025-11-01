@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Link from "../../components/Link.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { data } = post;
+
+---
+<BaseLayout title={`${data.title} | Blog`} description={data.summary ?? ''}>
+  <Fragment slot="nav"><Nav /></Fragment>
+
+  <div class="max-w-4xl mx-auto">
+    <article>
+      <header class="mb-8">
+        <h1 class="text-4xl md:text-5xl font-semibold leading-tight highlight-hero mb-4">
+          {data.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-600">
+          {data.date && (
+            <time datetime={data.date} class="uppercase tracking-wide">
+              {new Date(data.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </time>
+          )}
+          {data.tags?.length ? (
+            <ul class="flex flex-wrap gap-2">
+              {data.tags.map((tag) => (
+                <li class="px-2 py-0.5 border-4">{tag}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+        {data.summary && (
+          <p class="mt-4 text-xl text-gray-700 leading-relaxed">
+            {data.summary}
+          </p>
+        )}
+      </header>
+
+      {data.cover && (
+        <div class="my-8">
+          <img
+            src={data.cover.src}
+            alt={data.cover.alt ?? data.title}
+            class="w-full max-h-[60vh] object-cover border-4"
+            loading="eager"
+          />
+        </div>
+      )}
+
+      <div class="prose md:prose-lg prose-tight max-w-none">
+        <Content />
+      </div>
+    </article>
+
+    <div class="mt-12 pt-8 border-t-4">
+      <Link href="/blog" class="text-sm" variant="inline">
+        ← Back to all posts
+      </Link>
+    </div>
+  </div>
+
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
+
