@@ -192,19 +192,3 @@
   margin-right: -50vw;
 }
 
-/* ======================= */
-/* Section ticker animation */
-/* ======================= */
-@keyframes tickerScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.ticker-track {
-  width: max-content;
-  animation: tickerScroll var(--ticker-duration, 18s) linear infinite;
-}

@@ -3,7 +3,6 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Link from "../components/Link.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionTicker from "../components/SectionTicker.astro";
 import ContactSection from "../components/ContactSection.astro";
 ---
 <BaseLayout title="Home | Personal Site" description="Welcome to my personal site">
@@ -22,8 +21,8 @@ import ContactSection from "../components/ContactSection.astro";
 
   <!-- About me section -->
   <div class="mt-20 max-w-7xl mx-auto">
-  <SectionTicker label="ABOUT ME" />
-  <section class="my-12 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+    <h2 class="text-lg text-gray-600 uppercase tracking-wider mb-8">About Me</h2>
+    <section class="my-12 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
     <div>
       <h2 class="text-3xl md:text-5xl lg:text-5xl leading-tight  text-gray-800">
         Experienced Software Engineer with passion for innovation and startups
