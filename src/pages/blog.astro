@@ -1,17 +1,76 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Link from "../components/Link.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+// Sort by date: newest first
+const sortedPosts = [...posts].sort((a, b) => {
+  const da = new Date(a.data.date).getTime();
+  const db = new Date(b.data.date).getTime();
+  return db - da;
+});
 ---
-<BaseLayout title="Blog | David de la Torre" description="Thoughts and writings">
-  <Fragment slot="nav">
-    <Nav />
-  </Fragment>
-  <section class="space-y-4">
-    <h1 class="text-3xl font-light tracking-wide">Blog</h1>
-    <p class="text-gray-600">Coming soon. Thoughts and writings on design, development, and creativity.</p>
+<BaseLayout title="Blog | David de la Torre" description="Thoughts and writings on design, development, and creativity">
+  <Fragment slot="nav"><Nav /></Fragment>
+  
+  <div class="max-w-7xl mx-auto">
+  <section class="space-y-6">
+    <h1 class="text-3xl font-semibold">Blog</h1>
+    {sortedPosts.length === 0 ? (
+      <p class="text-gray-600">No posts yet. Add some in <code>src/content/blog</code>.</p>
+    ) : (
+      <div class="space-y-8">
+        {sortedPosts.map((post) => (
+          <article class="border border-gray-300 p-8 md:p-10 flex flex-col md:flex-row gap-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            {post.data.cover && (
+              <div class="md:w-1/3 flex-shrink-0">
+                <Link href={`/blog/${post.slug}`}>
+                  <img
+                    src={post.data.cover.src}
+                    alt={post.data.cover.alt ?? post.data.title}
+                    class="w-full aspect-[4/3] object-cover border border-gray-300 rounded-lg hover:opacity-90 transition-opacity"
+                  />
+                </Link>
+              </div>
+            )}
+            <div class="flex-1 flex flex-col">
+              <Link href={`/blog/${post.slug}`} class="text-2xl md:text-3xl font-normal mb-2 text-gray-800">
+                {post.data.title}
+              </Link>
+              <time datetime={post.data.date} class="text-sm text-gray-500 uppercase tracking-wide mb-3">
+                {new Date(post.data.date).toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </time>
+              {post.data.summary && (
+                <p class="text-gray-600 text-lg leading-relaxed mb-4">
+                  {post.data.summary}
+                </p>
+              )}
+              {post.data.tags?.length ? (
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {post.data.tags.map((tag) => (
+                    <span class="bg-black text-white px-3 py-1 text-xs uppercase rounded-lg">{tag}</span>
+                  ))}
+                </div>
+              ) : null}
+              <div class="mt-auto">
+                <Link href={`/blog/${post.slug}`} variant="inline" class="text-gray-800 text-base font-medium">
+                  Read more →
+                </Link>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
   </section>
-  <Fragment slot="footer">
-    <Footer />
-  </Fragment>
+  </div>
+  
+  <Fragment slot="footer"><Footer /></Fragment>
 </BaseLayout>

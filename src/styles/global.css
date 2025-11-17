@@ -8,6 +8,7 @@
 
 /* Import Tailwind CSS */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Theme configuration */
 @theme {
@@ -95,6 +96,90 @@
   .prose a:hover::after {
     @apply scale-x-110;
   }
+
+  /* Tweak default typography for Markdown content */
+  .prose {
+    @apply text-gray-800;
+  }
+  .prose img {
+    @apply w-full border border-gray-300 rounded-lg; /* full width with discrete border */
+  }
+
+  /* Headings inside prose */
+  .prose h1, .prose h2, .prose h3 {
+    @apply text-gray-800;
+  }
+
+  /* Blockquotes */
+  .prose blockquote {
+    @apply border-l-4 border-black bg-gray-50 not-italic px-6 py-4 text-gray-700;
+  }
+
+  /* Horizontal rule */
+  .prose hr {
+    @apply my-10 border-t-4 border-black;
+  }
+
+  /* Inline code */
+  .prose :not(pre) > code {
+    @apply text-sm bg-gray-100 px-1.5 py-0.5 rounded-sm border-2 border-black/10;
+  }
+
+  /* Code blocks */
+  .prose pre {
+    @apply bg-gray-900 text-gray-100 border-4 border-black p-4 overflow-x-auto rounded-none;
+  }
+  .prose pre code {
+    @apply bg-transparent p-0 text-sm leading-relaxed;
+  }
+
+  /* Tables */
+  .prose table {
+    @apply w-full border-4 border-black;
+  }
+  .prose thead th {
+    @apply bg-black text-white px-3 py-2 text-left;
+  }
+  .prose tbody td {
+    @apply border-t-2 border-black px-3 py-2 align-top;
+  }
+  .prose tbody tr:nth-child(even) td {
+    @apply bg-gray-50;
+  }
+
+  /* Lists */
+  .prose ul {
+    @apply list-disc pl-6;
+  }
+  .prose ol {
+    @apply list-decimal pl-6;
+  }
+  .prose li::marker {
+    color: rgb(0 0 0);
+  }
+
+  /* Keyboard keys */
+  .prose kbd {
+    @apply bg-gray-100 border-2 border-black/20 rounded-sm px-1.5 py-0.5 text-xs font-medium;
+  }
+
+  /* Captions in figures */
+  .prose figure figcaption {
+    @apply mt-2 text-xs text-gray-600;
+  }
+
+  /* Tighter line-height option for prose */
+  .prose.prose-tight p,
+  .prose.prose-tight li,
+  .prose.prose-tight blockquote p {
+    @apply leading-normal; /* ~1.5 */
+  }
+  .prose.prose-tight h1,
+  .prose.prose-tight h2,
+  .prose.prose-tight h3,
+  .prose.prose-tight h4 {
+    @apply leading-tight; /* ~1.25 */
+  }
 }
 
 /* Full-bleed utility to let a section break out of the max-width container */
@@ -107,19 +192,3 @@
   margin-right: -50vw;
 }
 
-/* ======================= */
-/* Section ticker animation */
-/* ======================= */
-@keyframes tickerScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.ticker-track {
-  width: max-content;
-  animation: tickerScroll var(--ticker-duration, 18s) linear infinite;
-}
