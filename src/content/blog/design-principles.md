@@ -50,3 +50,4 @@ No design is perfect on the first try. Be willing to iterate based on feedback a
 
 These principles help me create interfaces that are not only beautiful but also functional and accessible.
 
+
