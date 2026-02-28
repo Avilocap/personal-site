@@ -63,6 +63,27 @@
     animation-fill-mode: both;
   }
 
+  /* Multiline highlight: one stripe per wrapped line */
+  .highlight-multiline {
+    @apply relative inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 100%;
+    background-image: linear-gradient(to top, rgb(253 224 71 / 70%) 0.5em, transparent 0.5em);
+    animation: highlightLineReveal 0.8s ease-out forwards;
+  }
+
+  @keyframes highlightLineReveal {
+    from {
+      background-size: 0% 100%;
+    }
+    to {
+      background-size: 100% 100%;
+    }
+  }
+
 /* Global highlighter effect for links */
   /* Manual highlight class for custom usage */
   .highlight-link {
@@ -191,4 +212,3 @@
   margin-left: -50vw;
   margin-right: -50vw;
 }
-

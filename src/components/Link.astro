@@ -2,36 +2,36 @@
 export interface Props {
   href: string;
   class?: string;
-  variant?: 'default' | 'nav' | 'inline';
+  variant?: "default" | "nav" | "inline";
   external?: boolean;
 }
 
-const { 
-  href, 
-  class: className = '', 
-  variant = 'default',
-  external = false 
+const {
+  href,
+  class: className = "",
+  variant = "default",
+  external = false,
 } = Astro.props;
 
 // Determine if link is external
-const isExternal = external || href.startsWith('http');
+const isExternal = external || href.startsWith("http");
 
 // Base classes for the link
-// Add `group` so we can animate inner highlight on hover regardless of outer display
-const baseClasses = 'relative inline-block transition-all duration-300 group';
+const baseClasses = "relative inline-block transition-colors duration-300 group";
 
 // Variant-specific classes (text colors, typography only)
 const variantClasses = {
-  default: 'text-gray-700 hover:text-gray-900',
-  nav: 'text-md font-bold tracking-[0.15em] text-gray-600 hover:text-gray-900',
-  inline: 'text-current hover:text-gray-900'
+  default: "text-gray-700 hover:text-gray-900",
+  nav: "text-md font-bold tracking-[0.15em] text-gray-600 hover:text-gray-900",
+  inline: "text-current hover:text-gray-900",
 };
 
-// Highlighter height based on variant
-const highlighterHeight = {
-  default: 'h-2',
-  nav: 'h-2',
-  inline: 'h-1.5'
+// For multi-line links, paint highlight per line instead of one full block underline.
+const multilineHighlighterClasses = {
+  default:
+    "relative [box-decoration-break:clone] [-webkit-box-decoration-break:clone] bg-no-repeat [background-position:0_100%] [background-size:0%_100%] group-hover:[background-size:100%_100%] transition-[background-size] duration-300 ease-out [background-image:linear-gradient(to_top,rgba(253,224,71,0.7)_0.5em,transparent_0.5em)]",
+  inline:
+    "relative [box-decoration-break:clone] [-webkit-box-decoration-break:clone] bg-no-repeat [background-position:0_100%] [background-size:0%_100%] group-hover:[background-size:100%_100%] transition-[background-size] duration-300 ease-out [background-image:linear-gradient(to_top,rgba(253,224,71,0.7)_0.38em,transparent_0.38em)]",
 };
 
 const linkClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
@@ -43,20 +43,25 @@ const linkClasses = `${baseClasses} ${variantClasses[variant]} ${className}`;
   target={isExternal ? '_blank' : undefined}
   rel={isExternal ? 'noopener noreferrer' : undefined}
 >
-  {/* Wrap text in a relative inline-block container so the highlighter width matches the text */}
-  <span class="relative inline-block">
-    {/* Yellow highlighter effect bound to text width */}
-    <span class={`
-      absolute left-0 right-0 bottom-0 -z-10
-      bg-yellow-300/70 
-      ${highlighterHeight[variant]}
-      transition-all duration-300 ease-out
-      scale-x-0 origin-left
-      group-hover:scale-x-110
-    `}></span>
-
-    <span class="relative z-10">
+  {variant === "nav" ? (
+    // Keep nav highlight behavior to preserve active-link styling in the header.
+    <span class="relative inline-block">
+      <span
+        class="
+          absolute left-0 right-0 bottom-0 -z-10
+          bg-yellow-300/70 h-2
+          transition-all duration-300 ease-out
+          scale-x-0 origin-left
+          group-hover:scale-x-110
+        "
+      ></span>
+      <span class="relative z-10">
+        <slot />
+      </span>
+    </span>
+  ) : (
+    <span class={multilineHighlighterClasses[variant]}>
       <slot />
     </span>
-  </span>
+  )}
 </a>
