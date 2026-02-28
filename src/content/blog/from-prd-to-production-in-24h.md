@@ -16,7 +16,7 @@ In our day-to-day practice, prioritization happens from engineering, and once a 
 
 <figure>
   <img
-    src="/img/blog/como-construimos-con-agentes-en-zinkee/pipeline-1.svg"
+    src="/img/blog/from-prd-to-production-in-24h/pipeline-1.svg"
     alt="Zinkee delivery pipeline part 1"
   />
   <figcaption>Delivery pipeline (part 1): from need detection to PR creation.</figcaption>
@@ -26,7 +26,7 @@ Then comes the most visible part: implementation with agents, PR creation, quali
 
 <figure>
   <img
-    src="/img/blog/como-construimos-con-agentes-en-zinkee/pipeline-2.svg"
+    src="/img/blog/from-prd-to-production-in-24h/pipeline-2.svg"
     alt="Zinkee delivery pipeline part 2"
   />
   <figcaption>Delivery pipeline (part 2): CI, review loop, merge and deploy.</figcaption>
