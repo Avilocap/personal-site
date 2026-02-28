@@ -1,32 +1,45 @@
 ---
-title: "Cómo estamos construyendo en Zinkee con agentes (y por qué ahora entregamos x10)"
+title: "From PRD to Production in 24 Hours"
 date: "2026-02-28"
-summary: "Así ha cambiado nuestro flujo en Zinkee: de un deploy cada dos días a 5-6 deploys diarios, con agentes en desarrollo y review."
-tags: ["ia", "agentes", "engineering", "zinkee", "build-in-public"]
+summary: "How we work at Zinkee to move from one deploy every two days to 5-6 deploys per day, without sacrificing architecture, quality, or control."
+tags: ["ai", "agents", "engineering", "zinkee", "learnings"]
 draft: false
 ---
 
-Durante años, construir software seguía una secuencia bastante predecible: requisito, desarrollo, review y deploy. En Zinkee ese marco sigue existiendo, pero lo que ha cambiado por completo es cómo ejecutamos cada paso y dónde ponemos el valor humano.
+If six months ago someone had told me that at Zinkee we would go from shipping every two days to shipping five or six times per day, I probably would have called it an exaggeration.
 
-En poco tiempo hemos pasado de hacer aproximadamente **un deploy cada dos días** a movernos en **cinco o seis deploys diarios**. No ha sido por acelerar sin control ni por “automatizar por automatizar”. Ha sido por rediseñar el sistema de trabajo.
+Today, it is our reality.
 
-Todo empieza en Growth. El equipo detecta una necesidad real del producto, normalmente a través de entrevistas con clientes, experimentos y señales de uso, y lo convierte en un PRD. A partir de ahí, se prioriza y entra en ingeniería.
+And no, it did not happen because we started moving recklessly or lowered our quality bar. It happened because we changed how we work.
 
-Un ejemplo reciente es el trabajo del motor de integraciones:
-<https://linear.app/zinkee/issue/Z2N-307/integration-engine-mvp-http-service>
+Everything starts long before writing code. The Product team identifies real problems through interviews, experiments, and usage signals, and from there we create an internal PRD. When that work is done well, the rest of the flow breathes. When it is not, you feel it immediately.
 
-(El contexto de PRD también venía bien definido en iniciativas como esta:
-<https://linear.app/zinkee/issue/Z2DND-3554/settings-para-plugins>).
+I think one of our biggest learnings has been exactly this: problem clarity is almost everything.
 
-Donde más hemos notado el cambio es en lo que hacemos **antes** de programar. Hemos interiorizado que, si no hay una fase seria de research y planificación, el resultado cae muchísimo. Cuando ese trabajo previo está bien hecho, los agentes producen código que encaja mejor en la arquitectura y requiere menos correcciones posteriores. Estamos aplicando un enfoque muy alineado con este artículo de referencia:
-<https://boristane.com/blog/how-i-use-claude-code/#phase-1-research>.
+With agents, ambiguity is not hidden; it gets amplified. If the context is fuzzy, the result will be too. If the context is solid, speed and quality both increase dramatically.
 
-A nivel operativo, los repositorios están preparados con `AGENTS.md` y skills específicas, y eso reduce fricción. Los agentes generan implementación y PR; después entran pipelines de calidad (tests, type checks y validaciones adicionales) y una capa de review con distintos agentes. Según el tipo de cambio, mantenemos más o menos validación humana, pero el principio es el mismo: no se trata de confiar ciegamente, sino de diseñar un proceso que fuerce calidad.
+In our day-to-day practice, prioritization happens from engineering, and once a task enters execution, the focus is on research and planning before implementation. This has helped us a lot and is very aligned with the phased approach Boris Tane describes in his article on using agents with an initial research phase.
 
-El caso del motor de integraciones fue especialmente ilustrativo: en dos días tuvimos desde cero las fases 1 y 2, incluyendo arquitectura, despliegue, pruebas y puesta en producción; y la fase 5 (webhooks) se cerró en un día. Además, en paralelo al flujo principal, estamos pudiendo resolver varios bugs y mejoras menores cada jornada.
+## Zinkee delivery pipeline (part 1)
 
-También hemos cometido errores. El principal: arrancar ejecución sin definir bien el problema. Cuando el requisito es ambiguo, los agentes amplifican esa ambigüedad y entregan resultados mediocres. Otro patrón que hemos visto es el exceso de boilerplate: el código no necesariamente está mal, pero muchas veces es más de lo necesario. Por eso insistimos tanto en simplicidad, foco y validación continua en cada iteración.
+From need detection to PR creation.
 
-Si tuviera que resumir el aprendizaje más importante, sería este: el cambio no va de “dejar de necesitar ingenieros”, va de elevar el tipo de trabajo del ingeniero. Cada vez menos picar código por inercia y cada vez más pensar arquitectura, contexto, restricciones y criterios de calidad. Los agentes no sustituyen ese criterio; lo multiplican.
+Then comes the most visible part: implementation with agents, PR creation, quality pipelines, and review.
 
-Seguiré compartiendo cómo lo estamos haciendo en Zinkee, con lo que nos funciona y también con lo que no.
+Today we work with multiple automated reviewers, but there is one thing we have not given up: final technical decisions are still human. Agents propose, detect, accelerate, and raise the bar in many cases, but product and architecture judgment remains with the team.
+
+## Zinkee delivery pipeline (part 2)
+
+CI, review loop, merge, and deploy.
+
+We have also learned to live with the limits. If a PR gets too large, review quality tends to drop. If you do not push for simplification, unnecessary code appears. If you do not enforce continuous validation, things slip through. We made these mistakes multiple times at the beginning; now they are part of our operating rules.
+
+In parallel, something interesting happened: while a model is thinking, executing, or reviewing, the team uses those windows to close small bugs and improvements that used to be postponed for “when we have time.”
+
+In this kind of work, agents usually operate with much higher autonomy. Sometimes we delegate scoped changes and validate locally, but there are also fully autonomous cases where nobody intervenes until the agent opens the PR. From that point on, the PR enters the exact same quality loop (CI, checks, and review) as the rest of our work.
+
+One case that best captures this shift was the integration engine. For us, it was not just another feature, but an infrastructure component: the layer that lets Zinkee communicate with external systems and evolve from a collaborative database into a connected operations platform.
+
+The immediate goal was to build a useful MVP, while laying foundations so later phases would not force us to refactor earlier ones. That nuance was critical in our technical decisions.
+
+The challenge was not only “making HTTP calls”, but designing a base that could later support reusable connections, templates, inbound webhooks, and external channels without duplicating logic or coupling everything to the workflow engine.
