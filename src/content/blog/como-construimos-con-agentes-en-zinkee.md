@@ -43,3 +43,11 @@ One case that best captures this shift was the integration engine. For us, it wa
 The immediate goal was to build a useful MVP, while laying foundations so later phases would not force us to refactor earlier ones. That nuance was critical in our technical decisions.
 
 The challenge was not only “making HTTP calls”, but designing a base that could later support reusable connections, templates, inbound webhooks, and external channels without duplicating logic or coupling everything to the workflow engine.
+
+With that framing, we delivered and shipped key phases at a speed that, not long ago, would have felt unrealistic. Phase 1 and Phase 2 were completed in 24 hours: architecture, implementation, tests, and production deployment. And Phase 3 took another full 24 hours with the same level of completeness.
+
+Beyond the speed itself, what mattered most was confirming that we could move fast without compromising the long-term evolution of the system.
+
+With all that, my takeaway is simple: we are not in an era of “engineers being less needed,” we are in an era of more demanding engineering. Less time writing code by inertia, and more time understanding the problem, designing robust architecture, defining constraints, and making better decisions.
+
+For me, that is the real change. Agents do not replace the engineer. They force the engineer to level up.
