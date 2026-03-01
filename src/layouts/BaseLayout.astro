@@ -17,12 +17,12 @@ import "../styles/global.css";
   </head>
   <body class="min-h-screen px-5 flex flex-col antialiased bg-[url(/img/background.png)]">
     <header>
-      <div class="mx-auto h-24 px-4 flex items-center">
+      <div class="mx-auto min-h-24 py-4 flex items-start md:h-24 md:items-center md:py-0">
         <slot name="nav" />
       </div>
     </header>
     <main class="flex-1">
-      <div class="mx-auto py-10">
+      <div class="mx-auto pt-6 pb-10">
         <slot />
       </div>
     </main>
@@ -34,4 +34,3 @@ import "../styles/global.css";
   </body>
   
 </html>
-

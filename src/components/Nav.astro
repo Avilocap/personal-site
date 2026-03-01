@@ -12,7 +12,7 @@ const links = [
 // Get current path to highlight active link
 const currentPath = Astro.url.pathname;
 ---
-<nav class="flex items-center justify-between w-full">
+<nav class="flex w-full flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
   <!-- Logo/Name with ultra-thin typography -->
   <Link
     href="/"
@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
   </Link>
   
   <!-- Navigation links -->
-  <ul class="flex items-center gap-8">
+  <ul class="flex w-full flex-wrap items-center gap-x-5 gap-y-3 md:w-auto md:gap-8">
     {links.map((link) => {
       const isActive = currentPath === link.href ||
                       (link.href !== '/' && currentPath.startsWith(link.href));
@@ -32,6 +32,7 @@ const currentPath = Astro.url.pathname;
             href={link.href}
             variant="nav"
             class={`
+              whitespace-nowrap text-sm tracking-[0.1em] md:text-base md:tracking-[0.15em]
               ${isActive
                 ? 'text-gray-900 [&>span:first-child>span:first-child]:scale-x-110'
                 : 'text-gray-600'
