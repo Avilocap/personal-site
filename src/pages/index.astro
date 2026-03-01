@@ -10,11 +10,11 @@ import ContactSection from "../components/ContactSection.astro";
     <Nav />
   </Fragment>
   <!-- Main Hero (Full Height) -->
-  <section class="border-b-4 flex flex-col justify-end h-[calc(100vh-176px)] pb-10 gap-1">
-    <h1 class="text-9xl uppercase leading-tight text-gray-800">
-      Hey there, I'm <span class="highlight-hero">David</span>.<br />
-      A <span class="highlight-hero delay-1">software engineer</span>,<br />
-      that <span class="highlight-hero delay-2">loves good work</span>.
+  <section class="border-b-4 flex min-h-[62svh] flex-col justify-end gap-1 pb-4 md:h-[calc(100vh-176px)] md:pb-10">
+    <h1 class="text-[clamp(1.75rem,8.8vw,4.1rem)] md:text-[clamp(4rem,8vw,8rem)] uppercase leading-[0.95] text-gray-800 text-balance md:leading-tight">
+      Hey there, I'm <span class="highlight-hero">David.</span><br class="hidden md:block" />
+      A <span class="highlight-hero delay-1">software engineer,</span><br class="hidden md:block" />
+      that <span class="highlight-hero delay-2">loves good work.</span>
     </h1>
   </section>
 
