@@ -1,4 +1,5 @@
-# Astro Starter Kit: Minimal
+# Personal Site
+Personal website built with Astro and Tailwind CSS.
 
 ```sh
 npm create astro@latest -- --template minimal
