@@ -25,6 +25,17 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
+## Local development
+
+Install dependencies and start the development server:
+
+```sh
+npm install
+npm run dev
+```
+
+Then open [http://localhost:4321](http://localhost:4321).
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
