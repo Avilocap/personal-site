@@ -1,10 +1,6 @@
-# Astro Starter Kit: Minimal
+# David de la Torre’s personal site
 
-```sh
-npm create astro@latest -- --template minimal
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This Astro and Tailwind CSS site presents David de la Torre’s software engineering work, experience, and writing.
 
 ## 🚀 Project Structure
 
